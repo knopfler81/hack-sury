@@ -8,9 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
-
 gem 'omniauth-facebook'
-
 gem 'bootstrap-datepicker-rails'
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -23,21 +21,13 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem "cocoon"
-
 gem 'money-rails'
 gem 'stripe'
-
-source 'https://rails-assets.org' do
-  gem "rails-assets-underscore"
-end
-
-
 gem 'faker'
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
-
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -51,4 +41,16 @@ group :development, :test do
   gem "rails-erd"
 end
 
+group :test do
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'webmock'
+end
 
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end

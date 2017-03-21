@@ -21,6 +21,7 @@ module EasyTrip
   class Application < Rails::Application
     config.generators do |generate|
       generate.assets false
+      generate.test_framework :rspec
     end
 
     # Settings in config/environments/* take precedence over those specified here.
