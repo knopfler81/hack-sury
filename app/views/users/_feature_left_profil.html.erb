@@ -1,0 +1,17 @@
+  <div>
+  <div>
+    <%= cl_image_tag @user.avatar.path, :transformation=>[{:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},{:width=>200, :height=>200, :crop=>"scale"}], class: "profile-avatar",  class: "img-circle"%>
+  </div>
+  <div ><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary btn-sm" %>
+  </div>
+  <div>
+    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+  </div>
+  <div>
+    <% if @user.driving_licence == true %>
+      <p>I have a driving licence</p>
+      <% else %>
+      <p>I don't have a driving licence</p>
+    <% end %>
+  </div>
+</div>

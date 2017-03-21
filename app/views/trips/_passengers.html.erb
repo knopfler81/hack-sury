@@ -1,0 +1,22 @@
+<div class="passenger">
+  <%= cl_image_tag @trip.user.avatar.path, :transformation=>[
+      {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+      {:width=>40,  :height=>40, :crop=>"scale"}],
+      class: "avatar-driver",
+      "data-toggle" =>  'tooltip',
+      "data-placement" => 'bottom',
+      "data-html" => "true",
+      title: "#{@trip.user.nickname} </br> #{@trip.user.age} years old "%>
+  <% @trip.bookings.each do |booking| %>
+      <%= cl_image_tag booking.user.avatar.path, :transformation=>[
+      {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+      {:width=>40,  :height=>40, :crop=>"scale"}],
+      class: "avatar-passenger",
+      "data-toggle" =>  'tooltip',
+      "data-placement" => 'bottom',
+      "data-html" => "true",
+      title: "#{booking.user.nickname} </br> #{booking.user.age} years old "%>
+  <% end %>
+
+</div>
+

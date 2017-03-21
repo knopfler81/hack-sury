@@ -1,0 +1,49 @@
+.avatar {
+  width: 30px;
+  border-radius: 50%;
+}
+.avatar-large {
+  width: 50px;
+  border-radius: 50%;
+}
+.avatar-bordered {
+  width: 30px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+.avatar-square {
+  width: 30px;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
+
+.avatar-card {
+  width: 50px;
+  border-radius: 50%;
+  margin-top: -50px;
+  border: 2px solid white;
+}
+.avatar-review {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.profile-avatar {
+  border: 2px, solid, lightgray !important;
+}
+
+
+.avatar-passenger {
+  border-radius: 50%;
+  border: 3px solid lightgray;
+  padding: 2px;
+}
+
+.avatar-driver {
+  border-radius: 50%;
+  border: 3px solid green;
+  padding: 2px;
+}
+

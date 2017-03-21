@@ -1,0 +1,92 @@
+<div class="navbar-wagon fixed" style="z-index: 5;">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo-white.png" %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+
+      <!-- Notifications de loco -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <div class="badge-container dropdown-toggle", data-toggle="dropdown">
+            <i class="fa fa-bell-o" aria-hidden="true" style="color: white"></i>
+            <div class="badge badge-blue"><%= Notification.unread(current_user).count %></div>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <% Notification.unread(current_user).each do |notification| %>
+              <li>
+                <%= link_to notification_path(notification) do %>
+                  <% notification.content %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Profile picture and dropdown -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% if current_user.avatar.present? %>
+            <%= cl_image_tag current_user.avatar.path, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>40, :height=>40, :crop=>"scale"}
+            ], class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <% avatar_url = "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+        <%#= link_to t(".top_call_to_action", default: "Find a trip"), root_path, class: "btn btn-primary" %>
+
+    <% else %>
+
+      <!-- Login text link -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+
+    <% end %>
+
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if user_signed_in? %>
+          <li><%= link_to 'My profile', user_path(current_user) %></li>
+          <% if current_user.trips.blank? %>
+            <li><%= link_to 'Organize a trip', new_trip_path %></li>
+          <% else %>
+            <li><%= link_to 'My trips', user_path(current_user) %></li>
+            <!-- pour rajouter une ancre dans un lien my_profile_path(anchor: 'my_yachts') -->
+          <% end %>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><a href="#">About us</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+

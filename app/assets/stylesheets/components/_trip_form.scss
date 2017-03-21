@@ -1,0 +1,44 @@
+.nested-fields{
+  .remove_fields{
+    color: white;
+  }
+}
+
+.form-header{
+  padding-bottom: 20px;
+  h3 {
+    font-size: 22px;
+     color: gray;
+  }
+}
+
+.info-trip {
+  padding-bottom: 20px;
+  p {
+    font-size:13px;
+  }
+}
+
+.form_element{
+  margin-bottom: 10px;
+  .control-label{
+    font-size: 13px;
+  }
+  .form-guest-number, .form-motivations {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+}
+
+.submit_form_button{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.booking_form_show{
+  margin-top: 10px;
+  border-radius: 2px;
+  background: #fff;
+  padding: 30px;
+  margin-bottom: 30px;
+}

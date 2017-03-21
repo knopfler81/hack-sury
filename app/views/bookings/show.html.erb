@@ -1,0 +1,65 @@
+<div class="validation">
+
+  <div class="container booking">
+    <div class="row text-center">
+      <div class="col-xs-12">
+      </div>
+    </div>
+    <div class="row">
+
+
+       <!-- AJOUTER LES PHOTOS DU TRIP -->
+
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="card">
+          <h3><strong><%= @trip.title %></strong></h3>
+
+          <p><strong><%= @trip.start_date.strftime('%a %d %b %Y') %></strong>:</p>
+          <p><i class="fa fa-car" aria-hidden="true"></i> Departure from<strong> <%= @trip.start_city %></strong></p>
+          <br>
+          <% if @trip.steps.present? %>
+            <p><i class="fa fa-smile-o" aria-hidden="true"></i> Enjoy every step of the trip:</p>
+            <p><i class="fa fa-arrow-right" aria-hidden="true"></i>
+              <% @trip.steps.each  do|step|%>
+                <%= step.step_location %>.
+              <% end %></p>
+          <% end %>
+          <br>
+          <p><strong><%= @trip.arrival_date.strftime('%a %d %b %Y') %></strong>:</p>
+          <p><i class="fa fa-flag-checkered" aria-hidden="true"></i> Arrival in <strong><%= @trip.arrival_city %></strong></p>
+
+
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="card">
+          <h3>About the organisator</h3>
+          <p><%= cl_image_tag @trip.user.avatar.path, :transformation=>[
+          {:width=>400, :height=>400, :radius=>"max", :crop=>"crop"},
+          {:width=>50, :height=>50, :crop=>"scale"}] %>
+          <strong><%= @trip.user.first_name %> <%= @trip.user.last_name %> +33 6 12 32 45 75</strong></p>
+        </div>
+
+        <div class="card">
+          <h3>Your booking details</h3>
+
+          <p>You've booked for <strong><%= pluralize( @booking.booking_guests, 'passenger' ) %></strong></p>
+          <p>To pay: <strong><%= humanized_money_with_symbol(@booking.booking_price) %></strong></p>
+          <p><i>That's 25% of the maximum amount that you will have to pay to <%= @trip.user.first_name %> during the trip.</i></p>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <div id="book-trip">
+          <%= render 'bookings/book_process', booking: @booking %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LAISSER CE RENDER ICI, SINON CA CHIE -->
+<%= render 'modal' %>

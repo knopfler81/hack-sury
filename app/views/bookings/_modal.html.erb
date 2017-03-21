@@ -1,0 +1,45 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content booking">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-text">
+        <%= cl_image_tag @booking.user.avatar.path, :transformation=>[{:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},{:width=>50, :height=>50, :crop=>"scale"}], class: "profile-avatar",  class: "img-circle"%>
+        <h2><%= @booking.user.first_name %> <%= @booking.user.last_name %>,</h2>
+        <h3>Booking for <%= @booking.trip.title %></h3>
+        <%= form_tag booking_payments_path(@booking) do %>
+          <article>
+            <label class="booking_price">
+              <span><%= humanized_money_with_symbol(@booking.booking_price) %></span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="My upcoming trip as passenger"
+            data-email="<%= current_user.email %>"
+            data-description="Trip <%= @booking.trip.title %>"
+            data-amount="<%= @booking.booking_price_cents %>"
+            data-currency="<%= @booking.booking_price.currency %>">
+          </script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  $('.btn').on("click", function(event) {
+      event.preventDefault();
+      $('#myModal').modal( 'hide' );
+  });
+});
+</script>

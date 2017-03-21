@@ -1,0 +1,25 @@
+<div class="container-fluid" style="padding-top:70px">
+  <div class="row">
+    <!-- <div class="index-filter-form"> -->
+      <div class="col-xs-12 index-filter-form">
+        <%= render 'filter_form'%>
+      </div>
+    <!-- </div> -->
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <div class="row cards">
+        <% @trips.each do |trip|%>
+          <div class="col-xs-12 col-md-6">
+            <%= render 'shared/trip_card', trip: trip %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4 hidden-xs hidden-sm">
+      <div class="index-map">
+        <div id="map" style="width: 100%; height: 100%;" data-cities='<%= raw @trips_cities.to_json %>'></div>
+      </div>
+    </div>
+  </div>
+</div>

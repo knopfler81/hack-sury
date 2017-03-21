@@ -1,0 +1,36 @@
+<div class="card index">
+  <div class="card-carousel">
+    <%= render 'shared/carousel_index', trip: trip %>
+  </div>
+  <%= link_to trip_path(trip) do %>
+    <div class="card-content">
+
+      <div class="row">
+          <div class="col-xs-4">
+            <%= cl_image_tag trip.user.avatar.path, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :height=>200, :crop=>"scale"}],  class:"avatar-card" %>
+          </div>
+        <div class="col-xs-8">
+
+          <h2 class="title"><%= trip.title %> </h2>
+        </div>
+      </div>
+      <hr class="hr-card">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-xs-6 text-left">
+            <h2 class="city-text"><%= trip.start_city %></h2>
+            <h2 class="date-text"><%= trip.start_date.strftime("%d-%m-%Y") %> </h2>
+          </div>
+          <div class="col-xs-6 text-right">
+            <h2 class="city-text"><%= trip.arrival_city %></h2>
+            <h2 class="date-text"><%= trip.arrival_date .strftime("%d-%m-%Y")%></h2>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

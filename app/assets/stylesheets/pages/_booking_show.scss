@@ -1,0 +1,37 @@
+.validation{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), image-url('book_confo.jpg');
+  background-size: cover;
+
+  .container.booking{
+    background-color: white;
+    padding: 60px;
+    border-radius: 10px;
+    opacity: 0.9;
+
+    .card{
+      padding: 10px;
+    }
+
+    h3{
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+    h4{
+      font-size: 17px;
+    }
+    p{
+      font-size: 14px;
+    }
+  }
+}
+
+
+#img_booking{
+  width: 200px;
+}
+

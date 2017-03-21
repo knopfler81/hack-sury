@@ -1,0 +1,26 @@
+<%= simple_form_for :query, url: trips_path, :method => :get,  wrapper: :inline_form do |f| %>
+  <div class="row text-center filter-form">
+    <!-- <div class="col-xs-12 col-md-8"> -->
+    	<div class="col-xs-12 col-md-2">
+    		<%= f.input :start_city, placeholder: "Departure", input_html: {class: 'autocomplete', value: (params[:query][:start_city] if params[:query].present?)}, style: "width: 100%;" %>
+    	</div>
+    	<div class="col-xs-12 col-md-2">
+    		<%= f.input :start_date, placeholder: "Start date", input_html: {class: 'datepicker', value: (params[:query][:start_date] if params[:query].present?)}, style: "width: 100%;" %>
+    	</div>
+    	<div class="col-xs-12 col-md-2">
+    		<%= f.input :guests, collection: guests_collection, prompt: "Number of travelers", selected: (params[:query][:guests] if params[:query].present?), style: "width: 100%;" %>
+    	</div>
+    	<div class="col-xs-12 col-md-2">
+    		<%= f.button :submit, "Filter", class: "btn btn-warning", style: "width: 100%;" %>
+    	</div>
+      <div class="col-xs-12 col-md-4">
+        <% if current_user.present? %>
+            <%= link_to "Create your dream trip", user_path(current_user, anchor: 'D'), class:"btn btn-primary", style: "width: 100%" %>
+          <% else %>
+            <%= link_to "Create your dream trip", new_user_session_path, class:"btn btn-primary", style: "width: 100%" %>
+        <% end %>
+      </div>
+    <!-- </div> -->
+  </div>
+<% end %>
+

@@ -1,0 +1,21 @@
+<div class="row text-center">
+  <div class="col-xs-12 home_form_filter">
+    <%= simple_form_for :query, url: trips_path, :method => :get,  wrapper: :inline_form do |f| %>
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+          <div class="col-xs-12 col-md-9">
+            <%= f.input :start_city, placeholder: "Show me the Road Trips leaving from ...", input_html: {class: 'autocomplete form__input_home' }%>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <%= f.button :submit, "Find", class: "button_signup_home" %>
+          </div>
+        </div>
+        <!-- <div class="col-xs-12 col-md-4">
+          <%#= f.input :start_date, placeholder: "Start date", input_html: {class: 'datepicker'} %>
+          <%#= f.input :date_flexible, as: :boolean %>
+        </div> -->
+        <!-- <div class="col-xs-12 col-md-3">
+          <%#= f.input :guests, collection: 1..4, prompt: "Guests" %>
+        </div> -->
+      </div>
+    <% end %>
+</div>

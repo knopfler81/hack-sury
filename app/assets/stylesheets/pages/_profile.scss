@@ -1,0 +1,185 @@
+.global_card{
+  position: relative;
+  border: 1px solid black;
+  width:100%;
+  border-radius: 3px;
+}
+
+.tabs {
+  background: #21314D;
+  display: flex;
+  justify-content:center;
+  height: 50px;
+  margin-bottom: 30px;
+  height: 65px;
+  h3{
+    margin-bottom: 2px;
+    font-family: brandon-grotesque;
+    font-weight: lighter;
+  }
+}
+.tabs a {
+  color: white;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs h3 {
+  font-size: 20px;
+  font-weight: medium;
+  margin-top: 0;
+}
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.tab {
+  width:200px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.tabs .tab:last-child {
+  background-color: $orange;
+}
+
+.tab.active {
+  background: white;
+  color: black;
+}
+
+.next-trip-fixed{
+  width:400px;
+  height: 250px;
+  border: 1px solid black;
+}
+
+.product {
+  height: 170px;
+  border: 1px solid rgba(220,220,220,0.5);
+  position: relative;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  font-size: 0.9em;
+
+  p {
+    margin-bottom: 3px;
+  }
+
+  .trip-day {
+    display: inline-block;
+    width: 130px;
+    color: steelblue;
+  }
+
+  .trip-city, .user-nickname {
+    color: #888;
+  }
+
+  h3 {
+    display: inline-block;
+    margin: 0 20px 5px 0;
+    font-size: 25px;
+  }
+
+  .add-review {
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+  }
+}
+
+.product:hover {
+  background: #fbfbfb;
+}
+
+.product:hover .product-upvote {
+  font-size: 25px;
+}
+
+.product-upvote {
+  font-size: 20px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.product-description {
+  position: relative;
+  flex: 1 0 auto;
+  padding: 0 10px 0 50px;
+}
+.product-controls a {
+  font-size: 15px;
+  color: #CCCCCC;
+}
+.well{
+  margin: 0px 150px;
+  background-color: #fdfdfd;
+  height: 100px;
+  border-radius: 10px;
+  border:none;
+}
+
+.img-rounded{
+  border-radius: 10px !important;
+}
+
+.picture_driver_product{
+  position: absolute;
+  top: -12px;
+  left: 870px;
+  height: 70px;
+  width: 70px;
+  border-radius:50px;
+  border: 1px solid black;
+}
+.congratulation-next-trip{
+  border-radius:10px;
+  border: 1px solid rgba(220,220,220,0.8);
+  height:130px;
+  margin: 0px 150px;
+  background-color: #fdfdfd;
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 70%), image-url('no_trip.jpg');
+  background-size:cover;
+  background-position: 50% 50%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  h2 {
+    font-family:brandon-grotesque;
+    font-size: 35px;
+    font-weight: lighter;
+    color: white;
+    margin-bottom: 23px;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.btn-medium {
+  color: white;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.8;
+}
+
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+}
+
+.feature-left {
+  color: white;
+}

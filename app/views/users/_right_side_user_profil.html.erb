@@ -1,0 +1,120 @@
+<div class="header-profil">
+  <div class="profil-action ">
+    <div class="tabs">
+      <a class="tab" data-target="#A">
+        <h3>Past Trip</h3>
+        <p><%= @user.passenger_trips.passed.count %></p>
+      </a>
+      <a class="tab" data-target="#B">
+        <h3>Past Drive</h3>
+        <p><%= @user.trips.passed.count %></p>
+      </a>
+      <a class="tab active" data-target="#C">
+        <h3>Next Trip</h3>
+        <p><%= @user.passenger_trips.coming.count %></p>
+      </a>
+      <a class="tab" data-target="#D">
+        <h3>Next Drive</h3>
+        <p><%= @user.trips.coming.count %></p>
+      </a>
+      <% if current_user == @user %>
+        <a class="tab" data-target="#create_a_trip">
+          <h3>Organize a trip</h3>
+          <p><%= @user.trips.coming.count %></p>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+    <div class="tab-content hidden" id="A" >
+      <% if @user.passenger_trips.passed.blank? %>
+        <%= render "if_no_trip" %>
+      <% else %>
+        <div class="row">
+          <div class="col-xs-12">
+            <% if current_user != @user %>
+              <h4 class="text-center">Trips where <%= @user.nickname %> was a passenger</h4>
+            <% else %>
+              <h4 class="text-center"></h4>
+            <% end %>
+            <% @user.passenger_trips.passed.each do |trip|%>
+              <%= render "trip_card", trip:  trip %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="tab-content hidden" id="B">
+      <% if @user.trips.passed.blank? %>
+        <%= render "if_no_trip" %>
+      <% else %>
+        <div class="row">
+          <div class="col-xs-12">
+            <% if current_user != @user %>
+              <h4 class="text-center">Trips where <%= @user.nickname %> was organisator</h4>
+            <% else %>
+              <h4 class="text-center"></h4>
+            <% end %>
+            <% @user.trips.passed.each do |trip|%>
+              <%= render "trip_card", trip:  trip %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="tab-content" id="C" >
+      <% if @user.passenger_trips.coming.blank? %>
+        <%= render "if_no_trip" %>
+      <% else %>
+        <div class="row">
+          <div class="col-xs-12">
+            <% if current_user != @user %>
+              <h4 class="text-center"> <%= @user.nickname %> is the organisator</h4>
+            <% else %>
+              <h4 class="text-center"></h4>
+            <% end %>
+            <% @user.passenger_trips.coming.each do |trip| %>
+              <%= render "trip_card", trip:  trip %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+      <div class="tab-content hidden" id="D">
+        <% if @user.trips.coming.blank? %>
+          <%= render "if_no_trip" %>
+        <% else %>
+          <div class="row">
+            <div class="col-xs-12">
+              <% if current_user != @user %>
+                <h4 class="text-center"><%= @user.nickname %> will be a passenger</h4>
+              <% else %>
+                <h4 class="text-center"></h4>
+              <% end %>
+              <% @user.trips.coming.each do |trip|%>
+                <%= render "trip_card", trip: trip %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tab-content hidden col-xs-12" id="create_a_trip">
+        <div class="row">
+          <div class="col-xs-12">
+            <% if current_user == @user %>
+               <%= render "trips/trip_form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+

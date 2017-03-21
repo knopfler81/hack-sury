@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+      <%= simple_form_for @trip do |f| %>
+        <div class="col-xs-12 col-sm-6">
+          <h3>Lovely name & description</h3>
+          <%= f.input :title, placeholder: "Trip name", label: false, input_html: { class: 'form__input' } %>
+          <%= f.input :description, placeholder: "Description",label: false, hint: "Precise why do you want to do that trip. What do you expect from your future travel buddies ?", input_html: { class: 'form__input' } %>
+           <h3>Travel details</h3>
+          <%= f.input :start_city, placeholder: 'Start city', input_html: { class: 'autocomplete form__input' }, label: false %>
+          <%= f.input :start_date, placeholder: "Date of departure", as: :string, input_html: { class: 'datepicker form__input' }, label: false %>
+          <%= f.input :arrival_city, placeholder: 'Arrival city', input_html: { class: 'autocomplete form__input' }, label: false %>
+          <%= f.input :arrival_date, placeholder: "Date of arrival", as: :string, input_html: { class: 'datepicker form__input' }, label: false %>
+          <h4>Where will you stop?</h4>
+          <div id="steps">
+            <%= f.simple_fields_for :steps do |step| %>
+              <%= render 'trips/step_fields', f: step %>
+            <% end %>
+            <div class="links btn btn-default">
+              <%= link_to_add_association 'Add a step on the way', f, :steps, partial: 'trips/step_fields' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <h3>Your car? </h3>
+          <!-- Car or rental car -->
+          <%= f.collection_radio_buttons :has_car, [[true, "I have a car  "] ,[false, " We will have to rent a car"]], :first, :last %>
+          <!-- Capacity -->
+          <%= f.input :capacity, collection: 1..4, prompt: "Capacity", label: false, input_html: { class: 'form__input' }%>
+          <!-- car costs-->
+          <%= f.input :transportation_costs, placeholder: "Please estimate the global transport cost for this trip (gaz, taxes).", label: false, input_html: { class: 'form__input' }%>
+          <!-- IF rental car -->
+          <%= f.input :rental_costs, placeholder: "Please estimate the rental costs for the car.", id: 'rental_costs_id', label: false, input_html: { class: 'form__input' } %>
+          <!-- Min passenger required -->
+          <%= f.input :min_passengers_required, collection: 1..4, prompt: "Minimum passengers required",  hint: "In order to fit to your budget, add a minimum of passengers required. Do not exceed your total capacity.", label: false, input_html: { class: 'form__input' } %>
+          <!-- Display estimation of price per person -->
+          <p id="max_price_per_person"></p>
+          <%= f.input :flexible, label: "My itinerary is flexible" %>
+          <%= f.input :pictures, as: :attachinary, hint: 'Make other travelers dream with images of what you will see during the trip', label: false %>
+
+          <%= f.button :submit %>
+
+        </div>
+        <% end %>
+
+      <% content_for(:after_js) do %>
+       <%= javascript_tag do %>
+          $(document).ready(function(){
+            $('.datepicker').datepicker({
+              format: 'yyyy-mm-dd'
+            });
+          });
+       <% end %>
+      <% end %>
+  </div>
+</div>
+

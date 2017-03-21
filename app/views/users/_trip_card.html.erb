@@ -1,0 +1,39 @@
+<div class="product-container">
+  <div class="product">
+    <%= link_to trip_path(trip) do %>
+      <%= cl_image_tag trip.pictures.first.path, width: 238, height: 132, crop: :fill, class: "product-image img-rounded"%>
+    <% end %>
+    <div class="product-description">
+      <h3><%= trip.title %></h3><span class="user-nickname">by <%= trip.user.nickname %></span>
+      <p>
+        <span class="trip-day"><%= l(trip.start_date, format: :long) %></span>
+        <span class="trip-city"><%= trip.start_city %></span>
+      </p>
+      <p>
+        <span class="trip-day"><%= l(trip.arrival_date, format: :long) %></span>
+        <span class="trip-city"><%= trip.arrival_city %></span>
+      </p>
+
+        <%= cl_image_tag trip.user.avatar.path, width: 50, height: 50, crop: :fill, class: "picture_driver_product"%>
+
+
+      <% #if trip.passed?  %>
+        <div class="add-review">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Review
+            </button>
+
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#trip-collaps-<%=trip.id%>" aria-expanded="false" aria-controls="trip-collaps-<%=trip.id%>">
+              Review
+            </a>
+
+        </div>
+      <% #end %>
+      <%= render "trips/modal_review", trip: trip, review: @review %>
+    </div>
+  </div>
+  <div class="collapse" id="trip-collaps-<%=trip.id%>">
+    <div class="well">
+    </div>
+  </div>
+</div>

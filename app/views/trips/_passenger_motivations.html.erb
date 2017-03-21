@@ -1,0 +1,16 @@
+<% @trip.bookings.each do |booking| %>
+  <% if booking.motivation_message.present? %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 text-center">
+      <%= cl_image_tag booking.user.avatar.path, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>20,  :height=>20, :crop=>"scale"}]%>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+         <p><%= booking.motivation_message %></p>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+<% end %>
+

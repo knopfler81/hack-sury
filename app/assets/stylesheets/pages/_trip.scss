@@ -1,0 +1,126 @@
+.show-carousel{
+  height: 272px;
+}
+
+.show-image{
+  transform: translateY(-30%);
+}
+
+.travelers-reviews {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  p {
+    font-size: 12px;
+    padding: 5px 20px;
+  }
+  .best-picture{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fa-star {
+    color: orange;
+    font-size: 20px;
+  }
+}
+
+.about-trip {
+  background: #fff;
+  border-radius: 2px;
+  margin-top:10px;
+  padding: 30px;
+  h1 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 22px;
+     color: gray;
+     padding-bottom: 15px;
+   }
+
+  p {
+    font-size:13px;
+  }
+}
+
+.passengers-motivations {
+  background: #fff;
+  border-radius: 2px;
+  padding: 20px;
+  margin-top: 5px;
+
+  h3 {
+    font-size: 22px;
+    color: gray;
+    padding-bottom: 15px;
+  }
+  p {
+    font-style: italic;
+    color: #757575;
+    font-size: 12px;
+  }
+
+}
+
+.about-driver {
+  background: #fff;
+  border-radius: 2px;
+  margin-top: 10px;
+
+  h1 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 22px;
+    color: gray;
+    padding-bottom: 15px;
+  }
+
+  p {
+    font-size:13px;
+  }
+}
+
+
+.white-map{
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  h3 {
+    font-size: 22px;
+    color: gray;
+    padding-bottom: 15px;
+  }
+}
+
+
+.travelers-reviews {
+  background: #fff;
+}
+
+.a-review {
+  border-radius: 2px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #eeeeee;
+
+}
+
+.steps{
+  color: #ccc;
+}
+
+.arrow {
+  margin-left: 5px;
+}
+
+.left-block, .right-block {
+  margin-top: 70px;
+}
+
+.passenger {
+   padding: 5px;
+}

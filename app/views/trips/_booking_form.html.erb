@@ -1,0 +1,25 @@
+<%= simple_form_for [@trip, @booking] do |f| %>
+  <div class="form_element text-center form-header"> <h3><strong><%= @trip.available_seats%></strong> seats available</h3>  </div>
+  <div class="info-trip">
+    <div class="row">
+      <div class="col-xs-6">
+        <p><strong>Min price:</strong> <%= @trip.total_estimated_price / (@trip.capacity + 1) %>  €</p>
+        <p><strong>Confirmed:</strong> <%= @trip.confirmed ? "Yes" : "No" %></p>
+      </div>
+      <div class="col-xs-6">
+        <p><strong>Max price:</strong> <%= @trip.total_estimated_price / (@trip.min_passengers_required + 1) %> €</p>
+        <p><strong>Flexible:</strong> <%= @trip.flexible ? "Yes" : "No" %> </p>
+      </div>
+    </div>
+  </div>
+  <div class="form_element">
+
+    <%= f.input :booking_guests, label: "Number of travelers", collection: (1..@trip.available_seats), prompt: "Travelers" , input_html: { class: 'form-guest-number' }%>
+
+    <%= f.input :motivation_message, label: "Public motivation message", placeholder: "Why do you want to join that trip? This message will be visible on that trip page.", input_html: { class: 'form-motivations' } %>
+  </div>
+
+  <div class="text-center form_element">
+    <%= f.button :submit, value: "Book now", class: "btn btn-warning submit_form_button"%>
+  </div>
+<% end %>
