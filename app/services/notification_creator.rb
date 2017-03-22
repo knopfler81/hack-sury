@@ -38,7 +38,7 @@ class NotificationCreator
     @booking.trip.bookings.each do |booking|
       Notification.create(
         user: booking.user,
-        topic: @booking,
+        topic: @booking.trip,
         content: "#{@booking.trip.title} is confirmed, get ready for #{@booking.trip.start_date}."
       )
     end
@@ -47,7 +47,7 @@ class NotificationCreator
   def notify_trip_confirmation_for_organisator
     Notification.create(
       user: @booking.trip.user,
-      topic: @booking,
+      topic: @booking.trip,
       content: "Congratulations, #{@booking.trip.title} is confirmed, get ready for #{@booking.trip.start_date}."
     )
   end
