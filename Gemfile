@@ -45,10 +45,10 @@ group :test do
   gem 'capybara-webkit' #navigateur simultaion du comportement user
   gem 'database_cleaner' #vider la DB entre chaque test
   gem 'factory_girl_rails' #creer des ressources facilement = seed modifiables à  la volée.
-  gem 'rspec-rails' 
+  gem 'rspec-rails'
   gem 'shoulda-matchers' #expectation methode plus lisibles => relations spécifiée (it should belong_to...)
   gem 'simplecov', require: false #savoir le tx de couverture des tests
-  gem 'webmock' # garanti la neutralité des tests 
+  gem 'webmock' # garanti la neutralité des tests
 end
 
 source 'https://rails-assets.org' do
