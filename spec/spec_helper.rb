@@ -1,4 +1,5 @@
 require 'webmock/rspec'
+require "money-rails/test_helpers"
 
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
