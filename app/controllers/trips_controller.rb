@@ -57,7 +57,7 @@ class TripsController < ApplicationController
     else
       @trip = Trip.new(trip_params)
       @trip.user = current_user
-      @trip.total_estimated_price! # pour initialiser le total estimated price
+      #@trip.total_estimated_price! # pour initialiser le total estimated price
       if @trip.save
         @start_location = Destination.find_or_create_by(location: @trip.start_city)
         @last_location = Destination.find_or_create_by(location: @trip.arrival_city)
