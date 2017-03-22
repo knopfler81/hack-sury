@@ -14,7 +14,10 @@ class PaymentsController < ApplicationController
       currency:     @booking.booking_price.currency
     )
 
-    @booking.update(payment: charge.to_json, payment_status: true)
+    @booking.update(payment: charge.to_json)
+    @booking.payment
+    NotificationCreator.new(@booking).notify_related_users
+
 
     redirect_to user_path(current_user), notice: "Your payment was successfull :)"
 
