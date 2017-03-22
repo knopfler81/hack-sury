@@ -56,14 +56,14 @@ class Trip < ApplicationRecord
     return available_seats
   end
 
-  # def total_estimated_price!
-  #   if self.has_car
-  #     self.total_estimated_price = self.transportation_costs
-  #   else
-  #     self.total_estimated_price = self.transportation_costs + self.rental_costs
-  #   end
-  #   save
-  # end
+   def total_estimated_price!
+     if self.has_car
+       self.total_estimated_price = self.transportation_costs
+     else
+       self.total_estimated_price = self.transportation_costs + self.rental_costs
+     end
+     save
+   end
 
   private
 
