@@ -18,6 +18,9 @@ class User < ApplicationRecord
   validate :check_if_user_is_18
   #validates :nickname, uniqueness: true
 
+	#email after User.new
+	after_create :send_welcome_email
+
 
   def passed_trips_as_organisator
     trip_as_organisator = []
@@ -112,4 +115,9 @@ class User < ApplicationRecord
       errors.add(:birth_date, 'You should be over 18 years old.')
     end
   end
+
+	def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  	end
+
 end
