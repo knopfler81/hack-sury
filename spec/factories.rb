@@ -35,4 +35,11 @@ FactoryGirl.define do
     transportation_costs 300
     rental_costs 200
   end
+
+  factory :notification do
+    read false
+    content 'notification content'
+    user
+    association :topic, factory: :booking
+  end
 end
