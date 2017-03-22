@@ -59,6 +59,7 @@ class TripsController < ApplicationController
       @trip.user = current_user
       @trip.total_estimated_price! # pour initialiser le total estimated price
       if @trip.save
+        TripMaillerMailer.creation_confirmation(@trip).deliver_now
         @start_location = Destination.find_or_create_by(location: @trip.start_city)
         @last_location = Destination.find_or_create_by(location: @trip.arrival_city)
         @trip.steps.create(destination: @start_location, step_location: params[:trip][:start_city])
