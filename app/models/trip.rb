@@ -43,6 +43,10 @@ class Trip < ApplicationRecord
     end
     self.confirmed = true if confirmed_guests >= min_passengers_required
     save
+    #prevenir les passagers par mail que le trip est confo
+    TripMaillerMailer.trip_confirmation_passagers(self).deliver_now
+    #prevenir le driver par mail que le trip est confo
+    TripMaillerMailer.trip_confirmation_driver(self).deliver_now
   end
 
   def available_seats
@@ -56,14 +60,14 @@ class Trip < ApplicationRecord
     return available_seats
   end
 
-  def total_estimated_price!
-    if self.has_car
-      self.total_estimated_price = self.transportation_costs
-    else
-      self.total_estimated_price = self.transportation_costs + self.rental_costs
-    end
-    save
-  end
+   def total_estimated_price!
+     if self.has_car
+       self.total_estimated_price = self.transportation_costs
+     else
+       self.total_estimated_price = self.transportation_costs + self.rental_costs
+     end
+     save
+   end
 
   private
 

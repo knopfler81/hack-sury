@@ -17,8 +17,10 @@ class PaymentsController < ApplicationController
     @booking.update(payment: charge.to_json)
     @booking.payment
     NotificationCreator.new(@booking).notify_related_users
-
-
+    #prevenir le driver par mail
+    BookingMaillerMailer.booking_driver_confirmation(@booking).deliver_now
+    #prevenir le curent_user par mail
+    BookingMaillerMailer.booking_confirmation(@booking).deliver_now
     redirect_to user_path(current_user), notice: "Your payment was successfull :)"
 
   rescue Stripe::CardError => e

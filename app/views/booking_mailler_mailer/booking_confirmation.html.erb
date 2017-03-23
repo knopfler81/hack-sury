@@ -1,0 +1,4 @@
+Hello <%= @booking.user.first_name %>, you have just booked a trip on Easy Trip !
+Stay in touch with <%=  link_to "#{@booking.trip.user.first_name }", user_url(@booking.trip.user) %>
+have a look your trip at any time
+<%= link_to "#{@booking.trip.title }", trip_url(@booking.trip)%>

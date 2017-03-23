@@ -9,6 +9,7 @@ FactoryGirl.define do
     admin false
     birth_date 20.years.ago
     password 'password'
+    #avatar { File.new(Rails.root.join('app', 'assets', 'images', 'logo.png')) }
   end
 
   factory :booking do
