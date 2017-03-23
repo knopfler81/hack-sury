@@ -1,5 +1,5 @@
 class TripMaillerMailer < ApplicationMailer
-
+  default from: 'trip_team@easytrip.com'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -10,7 +10,29 @@ class TripMaillerMailer < ApplicationMailer
 
         mail(
           to:       @trip.user.email,
-          subject:  "Trip #{@trip.title} created!"
+          subject:  " Your Trip #{@trip.title} created!"
         )
   end
+
+  def trip_confirmation_passagers(trip)
+    @trip = trip
+
+    @trip.bookings.each do |booking|
+      @user = booking.user
+        mail(
+          to:       booking.user.email,
+          subject:  "Readdy to go ! to Trip #{@trip.arrival_city} is confirmed!"
+        )
+      end
+  end
+
+  def trip_confirmation_driver(trip)
+    @trip = trip
+
+        mail(
+          to:       @trip.user.email,
+          subject:  "Your Trip to #{@trip.arrival_city} is confirmed!"
+        )
+  end
+
 end

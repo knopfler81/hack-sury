@@ -43,6 +43,10 @@ class Trip < ApplicationRecord
     end
     self.confirmed = true if confirmed_guests >= min_passengers_required
     save
+    #prevenir les passagers par mail que le trip est confo
+    TripMaillerMailer.trip_confirmation_passagers(self).deliver_now
+    #prevenir le driver par mail que le trip est confo
+    TripMaillerMailer.trip_confirmation_driver(self).deliver_now
   end
 
   def available_seats
