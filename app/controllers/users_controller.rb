@@ -11,11 +11,6 @@ class UsersController < ApplicationController
     else
       redirect_to edit_user_registration_path, notice: 'Please complete your profile to organize a trip.'
     end
-    # @trips = @user.trips
-    # @passed_passenger_trips   = @user.passed_trips_as_passenger
-    # @passed_organisator_trips = @user.passed_trips_as_organisator
-    # @upcoming_passenger_trips = @user.upcoming_trips_as_passenger
-    # @passenger_motivations    = @user.motivations
   end
 
   private
