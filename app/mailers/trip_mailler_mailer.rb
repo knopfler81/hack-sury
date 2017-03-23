@@ -18,7 +18,7 @@ class TripMaillerMailer < ApplicationMailer
     @trip = trip
 
     @trip.bookings.each do |booking|
-
+      @user = booking.user
         mail(
           to:       booking.user.email,
           subject:  "Readdy to go ! to Trip #{@trip.arrival_city} is confirmed!"
