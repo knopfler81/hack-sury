@@ -1,1 +1,6 @@
-booking_driver_confirmation !!!!
+Hello <%= @booking.trip.user.first_name %>, you have a new Passenger for
+<%= link_to "#{@booking.trip.title }", trip_url(@booking.trip)%>!
+<%= link_to "#{@booking.user.first_name }", user_url(@booking.user)%>
+will comes with you to <%= @booking.trip.arrival_city %>.
+
+Be ready the departure is on <strong><%= @booking.trip.start_date %></strong>
