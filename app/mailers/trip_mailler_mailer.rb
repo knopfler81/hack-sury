@@ -21,7 +21,7 @@ class TripMaillerMailer < ApplicationMailer
 
         mail(
           to:       booking.user.email,
-          subject:  "Readdy to go ! to Trip #{@trip.trip.arrival_city} is confirmed!"
+          subject:  "Readdy to go ! to Trip #{@trip.arrival_city} is confirmed!"
         )
       end
   end
@@ -31,7 +31,7 @@ class TripMaillerMailer < ApplicationMailer
 
         mail(
           to:       @trip.user.email,
-          subject:  "Your Trip to #{@trip.trip.arrival_city} is confirmed!"
+          subject:  "Your Trip to #{@trip.arrival_city} is confirmed!"
         )
   end
 
