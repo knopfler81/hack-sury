@@ -22,38 +22,6 @@ class User < ApplicationRecord
 	after_create :send_welcome_email
 
 
-  def passed_trips_as_organisator
-    trip_as_organisator = []
-    trips.each do |trip|
-      trip_as_organisator << trip if trip.passed?
-    end
-    trip_as_organisator
-  end
-
-  def passed_trips_as_passenger
-    passenger_trips = []
-    passenger_bookings.each do |booking|
-      passenger_trips << booking.trip if booking.trip.passed?
-    end
-    passenger_trips
-  end
-
-  def upcoming_trips_as_passenger
-    passenger_trips = []
-    passenger_bookings.each do |booking|
-      passenger_trips << booking.trip
-    end
-    passenger_trips
-  end
-
-  def motivations
-    passenger_motivations = []
-    passenger_bookings.each do |booking|
-      passenger_motivations << booking.motivation_message
-    end
-    passenger_motivations
-  end
-
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
