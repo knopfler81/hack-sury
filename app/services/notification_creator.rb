@@ -11,7 +11,6 @@ class NotificationCreator
       notify_trip_confirmation_for_passengers
     end
   end
-  private
 
   def notify_organisator
     Notification.create(
