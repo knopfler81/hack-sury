@@ -12,8 +12,6 @@ class NotificationCreator
     end
   end
 
-  private
-
   def notify_organisator
     Notification.create(
       user: @booking.trip.user,
