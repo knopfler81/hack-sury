@@ -35,4 +35,12 @@ class TripMaillerMailer < ApplicationMailer
         )
   end
 
+  def send_message_to_driver(driver, message_content, sender, trip)
+    @message_content = message_content
+    @driver = driver
+    @sender = sender
+    @trip = trip
+
+    mail(to: @driver.email, subject: "You received a new message from #{@sender.first_name} about #{@trip.title}")
+  end
 end
