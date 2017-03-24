@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    post 'send_message'
+  end
 
   # rajouter avec pundit les problematiques d'authentifications (white list...).
   resources :trips do
