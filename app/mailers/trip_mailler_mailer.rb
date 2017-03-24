@@ -35,7 +35,7 @@ class TripMaillerMailer < ApplicationMailer
         )
   end
 
-  def send_message_to_driver(driver, message_content, sender, trip)
+  def mail_to_driver(driver, message_content, sender, trip)
     @message_content = message_content
     @driver = driver
     @sender = sender
