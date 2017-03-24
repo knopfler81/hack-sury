@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'prospects/create'
 
   get 'payments/create'
 
@@ -10,6 +9,8 @@ Rails.application.routes.draw do
   }
 
   root to: 'home#show'
+
+  resources :prospects, only: :create
 
   resources :users, only: [:show]
 
