@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     UserMailer.send_message(@user, params[:message]).deliver_now
+    redirect_to user_path(@user)
   end
 
   private

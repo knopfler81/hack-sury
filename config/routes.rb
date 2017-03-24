@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # rajouter avec pundit les problematiques d'authentifications (white list...).
   resources :trips do
+    post 'send_message_to_driver'
     resources :bookings, only: [:new, :create]
     resources :destinations, only: [:create]
     resources :steps, only: [:create, :edit, :update, :destroy]

@@ -1,6 +1,6 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
-    <form action="<%= user_send_message_path(@trip.user) %>" method="post">
+    <form action="<%= trip_send_message_to_driver_path(@trip) %>" method="post">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

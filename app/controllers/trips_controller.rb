@@ -91,6 +91,18 @@ class TripsController < ApplicationController
     redirect_to my_profile_path
   end
 
+
+  def send_message_to_driver
+    # params -> message: "user message"
+    # user_send_message
+    @trip = Trip.find(params[:trip_id])
+    @driver = @trip.user
+    @sender = current_user
+
+    UserMailer.send_message(@driver, params[:message], @sender, @trip).deliver_now
+    redirect_to trip_path(@trip)
+  end
+
   private
 
 

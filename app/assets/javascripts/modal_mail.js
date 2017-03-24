@@ -7,3 +7,19 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
+
+
+
+$(function() {
+  $("#exampleModal").submit(function(e) {
+    e.preventDefault();
+
+    $form = $(this);
+    $.post(document.location.href, $form.serialize(), function(response) {
+      $feedback = $("<div>").html(response).find(".form-feedback").hide();
+
+      $form.prepend($feedback)[0].reset();
+      $feedback.fadeIn(1500);
+    });
+  });
+})
