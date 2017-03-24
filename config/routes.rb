@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'prospects/create'
+
   get 'payments/create'
 
   devise_for :users, controllers: {
