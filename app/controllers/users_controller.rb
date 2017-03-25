@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/:user_id/send_message
+  def send_message
+    # params -> message: "user message"
+    # user_send_message
+    @user = User.find(params[:user_id])
+
+    UserMailer.send_message(@user, params[:message]).deliver_now
+    redirect_to user_path(@user)
+  end
+
   private
 
   def user_params

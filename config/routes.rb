@@ -10,12 +10,17 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
 
+
+  resources :users, only: [:show] do
+    post 'send_message'
+  end
+
   resources :prospects, only: :create
 
-  resources :users, only: [:show]
 
   # rajouter avec pundit les problematiques d'authentifications (white list...).
   resources :trips do
+    post 'send_message_to_driver'
     resources :bookings, only: [:new, :create]
     resources :destinations, only: [:create]
     resources :steps, only: [:create, :edit, :update, :destroy]
