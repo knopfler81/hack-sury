@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'payments/create'
 
   devise_for :users, controllers: {
@@ -9,9 +10,13 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
 
+
   resources :users, only: [:show] do
     post 'send_message'
   end
+
+  resources :prospects, only: :create
+
 
   # rajouter avec pundit les problematiques d'authentifications (white list...).
   resources :trips do
