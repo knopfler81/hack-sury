@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'payments/create'
 
   devise_for :users, controllers: {
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   }
 
   root to: 'home#show'
+
+  resources :prospects, only: :create
 
   resources :users, only: [:show]
 
