@@ -100,8 +100,7 @@ class TripsController < ApplicationController
     @sender = current_user
 
     TripMaillerMailer.mail_to_driver(@driver, params[:message], @sender, @trip).deliver_now
-
-    #redirect_to trip_path(@trip)
+    # redirect_to trip_path(@trip)
   end
 
   private
